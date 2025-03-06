@@ -60,11 +60,11 @@ mae=mean_absolute_error(y_test,y_pred)
 print('MAE=',mae)
 rmse=np.sqrt(mse)
 print("RMSE= ",rmse)
-```
+
 Program to implement the simple linear regression model for predicting the marks scored.
 Developed by: Prasanna A
 RegisterNumber: 23005675
-
+```
 
 
 ## Output:
