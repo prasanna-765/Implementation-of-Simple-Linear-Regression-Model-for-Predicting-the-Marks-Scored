@@ -1,3 +1,5 @@
+*Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored*
+
 ## AIM:
 To write a program to predict the marks scored by a student using the simple linear regression model.
 
@@ -15,68 +17,65 @@ To write a program to predict the marks scored by a student using the simple lin
 
 ## Program:
 
+...
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error, mean_squared_error
-df=…
-[9:22 pm, 6/3/2025] Machi ❤️‍🔥: exp3
-[9:22 pm, 6/3/2025] Machi ❤️‍🔥: ## Implementation of Simple Linear Regression Model Using Gradient descent
-## AIM:
-To write a program to predict the profit of a city using the linear regression model with gradient descent.
-
-## Equipments Required:
-1. Hardware – PCs
-2. Anaconda – Python 3.7 Installation / Jupyter notebook
-
-## Algorithm
-1. Import the required library and read the dataframe.
-
-2.Write a function computeCost to generate the cost function.
-
-3.Perform iterations og gradient steps with learning rate.
-
-4.Plot the Cost function using Gradient Descent and generate the required graph. 
-
-## Program:
-
-## Program to implement the linear regression using gradient descent.
-## Developed by: k vijay
-## RegisterNumber:23004034
- ...
- import numpy as np
- import pandas as pd
- from sklearn.preprocessing import StandardScaler
- def linear_regression(X1,y,learning_rate=0.01,num_iters=1000):
-    X=np.c_[np.ones(len(X1)),X1]
-    theta=np.zeros(X.shape[1]).reshape(-1,1)
-    for _ in range(num_iters):
-        predictions=(X).dot(theta).reshape(-1,1)
-        errors=(predictions-y).reshape(-1,1)
-        theta=learning_rate*(1/len(X1))*X.T.dot(errors)
-    return theta
- data=pd.read_csv('50_Startups.csv',header=None)
- X=(data.iloc[1:, :-2].values)
- X1=X.astype(float)
- scaler=StandardScaler()
- y=(data.iloc[1:,-1].values).reshape(-1,1)
- X1_Scaled=scaler.fit_transform(X1)
- Y1_Scaled=scaler.fit_transform(y)
- print(data.head())
- theta=linear_regression(X1_Scaled, Y1_Scaled)
- new_data=np.array([165349.2,136897.8,471784.1]).reshape(-1,1)
- new_Scaled=scaler.fit_transform(new_data)
- prediction=np.dot(np.append(1, new_Scaled),theta)
- prediction=prediction.reshape(-1,1)
- pre=scaler.inverse_transform(prediction)
- print(f"Predicted value: {pre}")
+df=pd.read_csv('student_scores.csv')
+print(df)
+df.head(0)
+df.tail(0)
+print(df.head())
+print(df.tail())
+x=df.iloc[:,:-1].values
+print(x)
+y=df.iloc[:,1].values
+print(y)
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=1/3,random_state=0)
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(x_train,y_train)
+y_pred = regressor.predict(x_test)
+print(y_pred)
+print(y_test)
+#Graph plot for training data
+plt.scatter(x_train,y_train,color='black')
+plt.plot(x_train, regressor.predict(x_train),color='blue') 
+plt.title("Hours vs Scores (Training set)")
+plt.xlabel("Hours")
+plt.ylabel("Scores")
+plt.show()
+#Graph plot for test data
+plt.scatter(x_test,y_test,color='black')
+plt.plot(x_train, regressor.predict(x_train),color='red')
+plt.title("Hours vs Scores (Testing set)")
+plt.xlabel("Hours")
+plt.ylabel("Scores")
+plt.show()
+mse=mean_absolute_error(y_test,y_pred)
+print('MSE=',mse)
+mae=mean_absolute_error(y_test,y_pred)
+print('MAE=',mae)
+rmse=np.sqrt(mse)
+print("RMSE= ",rmse)
 ...
 
-## Output:
 
-![Screenshot (44)](https://github.com/user-attachments/assets/757c4adb-fc63-496a-84fd-06098f20578c)
+Program to implement the simple linear regression model for predicting the marks scored.
+Developed by: Prasanna A
+RegisterNumber: 23005675
+
+
+
+## Output:
+![Screenshot 2024-11-14 082500](https://github.com/user-attachments/assets/d4d2c901-2c90-47e6-a29b-1d3884c4f933)
+![Screenshot 2024-11-14 082512](https://github.com/user-attachments/assets/72b36a03-9e42-4ac1-9888-4d3b7e3bf267)
+![Screenshot 2024-11-14 082534](https://github.com/user-attachments/assets/c8472d92-f3b9-4a08-874f-66a9e05963a1)
+![Screenshot 2024-11-14 082601](https://github.com/user-attachments/assets/bf01314f-abd0-4d6b-99d7-e9bdefa2ddf4)
 
 
 
 ## Result:
-Thus the program to implement the linear regression using gradient descent is written and verified using python programming.
+Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.
