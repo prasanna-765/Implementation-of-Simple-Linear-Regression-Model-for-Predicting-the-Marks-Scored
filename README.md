@@ -17,7 +17,7 @@ To write a program to predict the marks scored by a student using the simple lin
 
 ## Program:
 
-...
+```
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -60,9 +60,7 @@ mae=mean_absolute_error(y_test,y_pred)
 print('MAE=',mae)
 rmse=np.sqrt(mse)
 print("RMSE= ",rmse)
-...
-
-
+```
 Program to implement the simple linear regression model for predicting the marks scored.
 Developed by: Prasanna A
 RegisterNumber: 23005675
